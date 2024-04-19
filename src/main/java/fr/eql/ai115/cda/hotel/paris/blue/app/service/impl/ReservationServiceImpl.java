@@ -24,8 +24,8 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public void addNonAuthReservation(ReservationAddDto reservationAddDto) {
-        Person reservationPerson = personRepository.findByFirstNameAndLastNameAndEmail(reservationAddDto.getPerson().getFirstname(),
+    public Reservation addNonAuthReservation(ReservationAddDto reservationAddDto) {
+        Person reservationPerson = personRepository.findByFirstnameAndLastnameAndEmail(reservationAddDto.getPerson().getFirstname(),
                 reservationAddDto.getPerson().getLastname(), reservationAddDto.getPerson().getEmail());
         if(reservationPerson == null) {
             reservationPerson =  personRepository.save(reservationAddDto.getPerson());
@@ -38,6 +38,7 @@ public class ReservationServiceImpl implements ReservationService {
         reservation.setPayementDate(reservationAddDto.getPayementDate());
         reservation.setReservationDate(reservationAddDto.getReservationDate());
         reservationRepository.save(reservation);
+        return reservation;
     }
 
     @Override
