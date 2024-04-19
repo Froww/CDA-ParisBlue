@@ -3,6 +3,7 @@ package fr.eql.ai115.cda.hotel.paris.blue.app.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class Offer {
@@ -18,6 +19,9 @@ public class Offer {
     @ManyToOne
     @JoinColumn(referencedColumnName = "roomId")
     private Room room;
+
+    @OneToMany(mappedBy = "offer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Reservation> reservations;
 
     public Offer() {
     }
@@ -68,5 +72,13 @@ public class Offer {
 
     public void setRoom(Room room) {
         this.room = room;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
     }
 }

@@ -13,15 +13,21 @@ public class Reservation {
     private Long reservationId;
     private String reservationNumber;
     private LocalDateTime reservationDate;
-    private LocalDate plannedCheckInDate;
-    private LocalDate plannedCheckOutDate;
+    private LocalDate plannedArrivalDate;
+    private LocalDate plannedDepartureDate;
     private LocalDateTime actualCheckInDate;
     private LocalDateTime actualCheckOutDate;
-
     private LocalDateTime modificationDate;
+
+    private LocalDateTime payementDate;
+
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "offerId")
+    private Offer offer;
 
     @Enumerated(EnumType.STRING)
     private CancellationReason cancellationReason;
+
 
     @ManyToOne
     @JoinColumn(referencedColumnName = "personId")
@@ -54,20 +60,20 @@ public class Reservation {
         this.reservationDate = reservationDate;
     }
 
-    public LocalDate getPlannedCheckInDate() {
-        return plannedCheckInDate;
+    public LocalDate getPlannedArrivalDate() {
+        return plannedArrivalDate;
     }
 
-    public void setPlannedCheckInDate(LocalDate plannedCheckInDate) {
-        this.plannedCheckInDate = plannedCheckInDate;
+    public void setPlannedArrivalDate(LocalDate plannedArrivalDate) {
+        this.plannedArrivalDate = plannedArrivalDate;
     }
 
-    public LocalDate getPlannedCheckOutDate() {
-        return plannedCheckOutDate;
+    public LocalDate getPlannedDepartureDate() {
+        return plannedDepartureDate;
     }
 
-    public void setPlannedCheckOutDate(LocalDate plannedCheckOutDate) {
-        this.plannedCheckOutDate = plannedCheckOutDate;
+    public void setPlannedDepartureDate(LocalDate plannedDepartureDate) {
+        this.plannedDepartureDate = plannedDepartureDate;
     }
 
     public LocalDateTime getActualCheckInDate() {
@@ -109,4 +115,22 @@ public class Reservation {
     public void setPerson(Person person) {
         this.person = person;
     }
+
+    public Offer getOffer() {
+        return offer;
+    }
+
+    public void setOffer(Offer offer) {
+        this.offer = offer;
+    }
+
+    public LocalDateTime getPayementDate() {
+        return payementDate;
+    }
+
+    public void setPayementDate(LocalDateTime payementDate) {
+        this.payementDate = payementDate;
+    }
 }
+
+

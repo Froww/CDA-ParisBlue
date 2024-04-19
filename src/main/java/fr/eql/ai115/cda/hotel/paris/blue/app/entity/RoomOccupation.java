@@ -1,9 +1,6 @@
 package fr.eql.ai115.cda.hotel.paris.blue.app.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
@@ -11,6 +8,7 @@ import java.time.LocalDate;
 public class RoomOccupation {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long roomOccupationId;
     private LocalDate occupationStart;
     private LocalDate occupationEnd;
