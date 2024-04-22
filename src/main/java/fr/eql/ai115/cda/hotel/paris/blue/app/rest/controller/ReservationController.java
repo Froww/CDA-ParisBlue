@@ -16,12 +16,12 @@ public class ReservationController {
         this.reservationService = reservationService;
     }
 
-    @PostMapping("/add")
+    @PostMapping
     public Reservation addNonAuthReservation(@RequestBody ReservationAddDto reservationAddDto) {
         return reservationService.addNonAuthReservation(reservationAddDto);
     }
 
-    @GetMapping("/get")
+    @GetMapping
     public Reservation getNonAuthReservation(@RequestBody ReservationGetDto reservationGetDto) {
         return reservationService.getNonAuthReservation(reservationGetDto);
     }
