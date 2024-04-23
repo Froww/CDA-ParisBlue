@@ -38,6 +38,7 @@ public class ReservationServiceImpl implements ReservationService {
         reservation.setPlannedDepartureDate(reservationAddDto.getPlannedDeparture());
         reservation.setPayementDate(reservationAddDto.getPayementDate());
         reservation.setReservationDate(reservationAddDto.getReservationDate());
+        reservation.setReservationNumber(generateReservationNumber());
         reservationRepository.save(reservation);
         return reservation;
     }
@@ -57,5 +58,9 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public void updateReservation() {
 
+    }
+
+    private String generateReservationNumber() {
+        return "RES" + System.currentTimeMillis();
     }
 }

@@ -2,6 +2,7 @@ package fr.eql.ai115.cda.hotel.paris.blue.app.service.impl;
 
 import fr.eql.ai115.cda.hotel.paris.blue.app.entity.Account;
 import fr.eql.ai115.cda.hotel.paris.blue.app.entity.Role;
+import fr.eql.ai115.cda.hotel.paris.blue.app.entity.dto.LoginDto;
 import fr.eql.ai115.cda.hotel.paris.blue.app.entity.dto.RegisterDto;
 import fr.eql.ai115.cda.hotel.paris.blue.app.repository.AccountRepository;
 import fr.eql.ai115.cda.hotel.paris.blue.app.repository.PersonRepository;
@@ -12,6 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -61,7 +65,11 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public String login() {
-        return null;
+    public String login(LoginDto loginDto) {
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword())
+        );
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        return jwtGenerator.generateToken(authentication);
     }
 }
