@@ -1,5 +1,6 @@
 package fr.eql.ai115.cda.hotel.paris.blue.app.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -20,6 +21,7 @@ public class Offer {
     @JoinColumn(referencedColumnName = "roomId")
     private Room room;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "offer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Reservation> reservations;
 

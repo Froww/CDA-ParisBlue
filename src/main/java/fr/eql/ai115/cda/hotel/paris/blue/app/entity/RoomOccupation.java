@@ -16,4 +16,36 @@ public class RoomOccupation {
     @ManyToOne
     @JoinColumn(referencedColumnName = "roomId")
     private Room room;
+
+    public Long getRoomOccupationId() {
+        return roomOccupationId;
+    }
+
+    public void setRoomOccupationId(Long roomOccupationId) {
+        this.roomOccupationId = roomOccupationId;
+    }
+
+    public LocalDate getOccupationStart() {
+        return occupationStart;
+    }
+
+    public void setOccupationStart(LocalDate occupationStart) {
+        this.occupationStart = occupationStart;
+    }
+
+    public LocalDate getOccupationEnd() {
+        return occupationEnd;
+    }
+
+    public void setOccupationEnd(LocalDate occupationEnd) {
+        this.occupationEnd = occupationEnd;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
 }

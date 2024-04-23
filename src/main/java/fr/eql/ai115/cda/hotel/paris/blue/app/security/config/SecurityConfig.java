@@ -40,7 +40,7 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests((authorize) ->
                         authorize.requestMatchers(HttpMethod.POST, "/api/auth/**").permitAll()
-                                .requestMatchers( "/api/nonauth/reservation").permitAll()
+                                .requestMatchers( "/api/nonauth/**").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/apiRest/user").hasAnyAuthority("USER", "ADMIN")
                                 .requestMatchers(HttpMethod.GET, "/apiRest/admin").hasAuthority("ADMIN")
                                 .anyRequest().authenticated());
