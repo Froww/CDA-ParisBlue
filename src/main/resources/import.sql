@@ -12,7 +12,10 @@ INSERT INTO `room` (room_id, capacity, room_number, room_type) VALUES (3, 3, 103
 -- Données pour la table `offer`
 INSERT INTO `offer` (offer_id, nightly_rate, offer_start_date, offer_end_date, room_room_id) VALUES (1, 100.00, '2023-05-01', '2023-05-10', 1);
 INSERT INTO `offer` (offer_id, nightly_rate, offer_start_date, offer_end_date, room_room_id) VALUES (2, 150.00, '2023-05-11', '2023-05-20', 2);
-INSERT INTO `offer` (offer_id, nightly_rate, offer_start_date, offer_end_date, room_room_id) VALUES (3, 75.00, '2023-05-21', '2023-05-30', 3);
+INSERT INTO `offer` (offer_id, nightly_rate, offer_start_date, offer_end_date, room_room_id) VALUES (3, 75.00, '2023-05-21', '2023-12-30', 3);
+INSERT INTO `offer` (offer_id, nightly_rate, offer_start_date, offer_end_date, room_room_id) VALUES (4, 75.00, '2024-01-21', '2024-12-30', 1);
+INSERT INTO `offer` (offer_id, nightly_rate, offer_start_date, offer_end_date, room_room_id) VALUES (5, 75.00, '2024-01-21', '2024-12-30', 2);
+INSERT INTO `offer` (offer_id, nightly_rate, offer_start_date, offer_end_date, room_room_id) VALUES (6, 75.00, '2024-01-21', '2024-12-30', 3);
 
 -- Données pour la table `reservation`
 INSERT INTO `reservation` (reservation_id, planned_arrival_date, planned_departure_date, actual_check_in_date, actual_check_out_date, reservation_date, reservation_number, person_person_id, offer_offer_id) VALUES (1, '2023-05-01', '2023-05-05', '2023-05-01 14:00:00', '2023-05-05 11:00:00', '2023-04-20 10:00:00', 'RES123456', 1, 1);

@@ -7,5 +7,5 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface RoomOccupationRepository extends JpaRepository<RoomOccupation, Long> {
-    List<RoomOccupation> findByOccupationStartBetweenAndOccupationEndBetween(LocalDate occupationStart, LocalDate occupationEnd);
+    List<RoomOccupation> findByOccupationStartBeforeAndOccupationEndAfter(LocalDate endDate, LocalDate startDate);
 }

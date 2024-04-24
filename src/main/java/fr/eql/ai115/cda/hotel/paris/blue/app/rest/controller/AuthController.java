@@ -4,7 +4,6 @@ import fr.eql.ai115.cda.hotel.paris.blue.app.entity.dto.AuthResponseDto;
 import fr.eql.ai115.cda.hotel.paris.blue.app.entity.dto.LoginDto;
 import fr.eql.ai115.cda.hotel.paris.blue.app.entity.dto.RegisterDto;
 import fr.eql.ai115.cda.hotel.paris.blue.app.service.AuthService;
-import org.aspectj.weaver.patterns.IToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
