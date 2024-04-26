@@ -5,6 +5,7 @@ import fr.eql.ai115.cda.hotel.paris.blue.app.entity.Reservation;
 import fr.eql.ai115.cda.hotel.paris.blue.app.entity.RoomOccupation;
 import fr.eql.ai115.cda.hotel.paris.blue.app.entity.dto.ReservationAddDto;
 import fr.eql.ai115.cda.hotel.paris.blue.app.entity.dto.ReservationGetDto;
+import fr.eql.ai115.cda.hotel.paris.blue.app.entity.dto.response.ReservationResponseDto;
 import fr.eql.ai115.cda.hotel.paris.blue.app.repository.AccountRepository;
 import fr.eql.ai115.cda.hotel.paris.blue.app.repository.PersonRepository;
 import fr.eql.ai115.cda.hotel.paris.blue.app.repository.ReservationRepository;
@@ -54,10 +55,32 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public Reservation getNonAuthReservation(ReservationGetDto reservationGetDto) {
-        return reservationRepository.findReservationByReservationNumberAndPersonLastnameAndPersonEmail(
+    public ReservationResponseDto getNonAuthReservation(ReservationGetDto reservationGetDto) {
+        Reservation reservation = reservationRepository.findReservationByReservationNumberAndPersonLastnameAndPersonEmail(
                 reservationGetDto.getReservationNumber(),
                 reservationGetDto.getLastname(), reservationGetDto.getEmail());
+        if (reservation == null) {
+            return null;
+        }
+        return mapReservationToReservationResponseDto(reservation);
+
+    }
+
+    private ReservationResponseDto mapReservationToReservationResponseDto(Reservation reservation) {
+        ReservationResponseDto reservationResponseDto = new ReservationResponseDto();
+        reservationResponseDto.setReservationNumber(reservation.getReservationNumber());
+        reservationResponseDto.setReservationDate(reservation.getReservationDate());
+        reservationResponseDto.setPlannedArrivalDate(reservation.getPlannedArrivalDate());
+        reservationResponseDto.setPlannedDepartureDate(reservation.getPlannedDepartureDate());
+        reservationResponseDto.setNightlyRate(reservation.getOffer().getNightlyRate());
+        reservationResponseDto.setRoomNumber(reservation.getOffer().getRoom().getRoomNumber());
+        reservationResponseDto.setRoomType(reservation.getOffer().getRoom().getRoomType());
+        reservationResponseDto.setPayementDate(reservation.getPayementDate());
+        reservationResponseDto.setFirstname(reservation.getPerson().getFirstname());
+        reservationResponseDto.setLastname(reservation.getPerson().getLastname());
+        reservationResponseDto.setEmail(reservation.getPerson().getEmail());
+        reservationResponseDto.setPhone(reservation.getPerson().getPhone());
+        return reservationResponseDto;
     }
 
     @Override

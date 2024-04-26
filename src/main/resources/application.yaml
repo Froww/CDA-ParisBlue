@@ -15,3 +15,5 @@ spring:
     password: 123-Soleil
 server:
   port: 9090
+front:
+  url: http://localhost:3000

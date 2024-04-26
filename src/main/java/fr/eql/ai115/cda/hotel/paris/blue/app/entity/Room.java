@@ -1,5 +1,6 @@
 package fr.eql.ai115.cda.hotel.paris.blue.app.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class Room {
     @Enumerated(EnumType.STRING)
     private RoomType roomType;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "room", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     List<RoomOccupation> roomOccupations;
 

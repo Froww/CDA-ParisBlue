@@ -21,7 +21,6 @@ public class Offer {
     @JoinColumn(referencedColumnName = "roomId")
     private Room room;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "offer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Reservation> reservations;
 
