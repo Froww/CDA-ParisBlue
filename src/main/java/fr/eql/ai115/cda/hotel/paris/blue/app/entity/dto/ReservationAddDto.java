@@ -12,8 +12,8 @@ public class ReservationAddDto {
     private Offer offer;
     private LocalDate plannedArrival;
     private LocalDate plannedDeparture;
-    private LocalDateTime payementDate;
-    private LocalDateTime reservationDate;
+
+    private boolean isPayed;
 
     public ReservationAddDto() {
     }
@@ -50,19 +50,11 @@ public class ReservationAddDto {
         this.plannedDeparture = plannedDeparture;
     }
 
-    public LocalDateTime getPayementDate() {
-        return payementDate;
+    public boolean getIsPayed() {
+        return isPayed;
     }
 
-    public void setPayementDate(LocalDateTime payementDate) {
-        this.payementDate = payementDate;
-    }
-
-    public LocalDateTime getReservationDate() {
-        return reservationDate;
-    }
-
-    public void setReservationDate(LocalDateTime reservationDate) {
-        this.reservationDate = reservationDate;
+    public void setIsPayed(boolean payed) {
+        isPayed = payed;
     }
 }

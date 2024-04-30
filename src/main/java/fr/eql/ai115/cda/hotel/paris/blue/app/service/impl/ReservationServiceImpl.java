@@ -13,6 +13,8 @@ import fr.eql.ai115.cda.hotel.paris.blue.app.repository.RoomOccupationRepository
 import fr.eql.ai115.cda.hotel.paris.blue.app.service.ReservationService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 
 @Service
 public class ReservationServiceImpl implements ReservationService {
@@ -47,8 +49,8 @@ public class ReservationServiceImpl implements ReservationService {
         reservation.setOffer(reservationAddDto.getOffer());
         reservation.setPlannedArrivalDate(reservationAddDto.getPlannedArrival());
         reservation.setPlannedDepartureDate(reservationAddDto.getPlannedDeparture());
-        reservation.setPayementDate(reservationAddDto.getPayementDate());
-        reservation.setReservationDate(reservationAddDto.getReservationDate());
+        reservation.setReservationDate(LocalDateTime.now());
+        reservation.setPayementDate(reservationAddDto.getIsPayed() ? LocalDateTime.now() : null);
         reservation.setReservationNumber(generateReservationNumber());
         reservationRepository.save(reservation);
         return reservation;

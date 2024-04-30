@@ -13,12 +13,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/nonauth/offers")
+@CrossOrigin("${front.url}")
 public class OfferController {
 
     @Autowired
     OfferService offerService;
 
-    @GetMapping("/available")
+    @PostMapping("/available")
     public List<OfferResponseDto> getAvailableOffers(@RequestBody AvailableOfferGetDto availableOfferGetDto) {
         return offerService.getAvailableOffers(availableOfferGetDto);
     }
